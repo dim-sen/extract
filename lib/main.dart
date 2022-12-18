@@ -1,3 +1,4 @@
+import 'package:extract/utils/image_cropper_view.dart';
 import 'package:extract/utils/image_picker_class.dart';
 import 'package:extract/widgets/modal_dialog.dart';
 import 'package:flutter/material.dart';
@@ -117,6 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onCameraTap: () {
               pickerImage(source: ImageSource.camera).then((value) {
                 if (value != '') {
+                  imageCropperView(value, context);
 
                 }
               });
@@ -124,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onGalleryTap: () {
               pickerImage(source: ImageSource.gallery).then((value) {
                 if (value != '') {
-
+                  imageCropperView(value, context);
                 }
               });
             },
