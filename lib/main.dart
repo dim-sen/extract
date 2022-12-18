@@ -1,4 +1,9 @@
+import 'package:extract/utils/image_picker_class.dart';
+import 'package:extract/widgets/modal_dialog.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer';
+
+import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -105,10 +110,28 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          imagePickerModal(
+            context,
+            onCameraTap: () {
+              pickerImage(source: ImageSource.camera).then((value) {
+                if (value != '') {
+
+                }
+              });
+            },
+            onGalleryTap: () {
+              pickerImage(source: ImageSource.gallery).then((value) {
+                if (value != '') {
+
+                }
+              });
+            },
+          );
+        },
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        label: const Text("Scan an Image"),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
