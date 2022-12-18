@@ -1,8 +1,10 @@
+import 'package:extract/screen/recognization_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'dart:developer';
 
-void imageCropperView(String? path, BuildContext context) async {
+Future<String> imageCropperView(String? path, BuildContext context) async {
 
   CroppedFile? croppedFile = await ImageCropper().cropImage(
     sourcePath: path!,
@@ -31,7 +33,9 @@ void imageCropperView(String? path, BuildContext context) async {
 
   if (croppedFile != null) {
     log("Image Cropped");
+    return croppedFile.path;
   } else {
     log("Nothin'");
+    return '';
   }
 }
